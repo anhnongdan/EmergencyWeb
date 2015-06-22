@@ -40,7 +40,8 @@ include('readPList.php');
 
    final class DB extends Database_Object
     {
-        public static function Open($database = 'my_db', $hostname = 'localhost', $hostport = '', $username = 'thang', $password = 'tatthang')
+       //Mysql database on amazon
+        public static function Open($database = 'depqp2rcu5m', $hostname = 'mysqlsdb.co8hm2var4k9.eu-west-1.rds.amazonaws.com', $hostport = '3306', $username = 'depqp2rcu5m', $password = '11UGxl4cUr3D')
         {
             if (!self::$DB_Open)
             {
