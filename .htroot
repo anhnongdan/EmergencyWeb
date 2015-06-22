@@ -1,0 +1,1 @@
+while(!file_exists(getcwd()."/.htroot")){chdir('..');}

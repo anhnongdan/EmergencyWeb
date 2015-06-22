@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Place>
+	<area>
+		<name>Matunaga Iccho Me</name>
+		<center_lat>37.531754</center_lat>
+		<center_long>139.956347</center_long>
+		<lat_min>37.530857</lat_min>
+		<lat_max>37.532908</lat_max>
+		<long_min>139.953836</long_min>
+		<long_max>139.957623</long_max>
+	</area>
+	<area>
+		<name>UoA</name>
+		<center_lat>37.523763</center_lat>
+		<center_long>139.93726</center_long>
+		<lat_min>37.52155</lat_min>
+		<lat_max>37.526009</lat_max>
+		<long_min>139.935093</long_min>
+		<long_max>139.940039</long_max>
+	</area>
+	<area>
+		<name>Aizu Station</name>
+		<center_lat>37.508292</center_lat>
+		<center_long>139.930158</center_long>
+		<lat_min>37.507304</lat_min>
+		<lat_max>37.509551</lat_max>
+		<long_min>139.929535</long_min>
+		<long_max>139.930394</long_max>
+	</area>
+	<area>
+		<name>Nanoka Machi</name>
+		<center_lat>37.497788</center_lat>
+		<center_long>139.924901</center_long>
+		<lat_min>37.496018</lat_min>
+		<lat_max>37.499321</lat_max>
+		<long_min>139.922991</long_min>
+		<long_max>139.926703</long_max>
+	</area>
+	<area>
+		<name>Byakkyo Machi</name>
+		<center_lat>37.507017</center_lat>
+		<center_long>139.935769</center_long>
+		<lat_min>37.504819</lat_min>
+		<lat_max>37.508172</lat_max>
+		<long_min>139.933269</long_min>
+		<long_max>139.937561</long_max>
+	</area>	
+	<area>
+		<name>Michikita Machi</name>
+		<center_lat>37.518125</center_lat>
+		<center_long>139.927626</center_long>
+		<lat_min>37.515436</lat_min>
+		<lat_max>37.520371</lat_max>
+		<long_min>139.921961</long_min>
+		<long_max>139.931574</long_max>
+	</area>				
+</Place>

@@ -1,0 +1,337 @@
+
+//Reserved Functions 
+
+
+function createList(){
+	document.write(window.listDOM);
+}
+
+   //var listDOM="";	
+function downloadUrl (fileURL,map,pinsArray) {  
+       //var xmlDoc = document.implementation.createDocument("","");
+		//xmlDoc.async = "false";
+		//xmlDoc.load(fileURL);
+        
+
+if (window.XMLHttpRequest)
+  {
+    var xmlhttp=new XMLHttpRequest();
+  }
+else // IE 5/6
+  {
+    var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+		xmlhttp.open("GET", fileURL, false);
+		xmlhttp.send();
+		var xmlDoc = xmlhttp.responseXML;
+		
+        var xmlRows = xmlDoc.getElementsByTagName("Marker");
+        var listDOMs="";
+        for (var i = 0; i < xmlRows.length; i++) {
+            var xmlrow = xmlRows[i];
+            
+            var pinLat = xmlrow.getElementsByTagName("Lat")[0].childNodes[0].nodeValue;
+            var pinLng = xmlrow.getElementsByTagName("Lng")[0].childNodes[0].nodeValue;
+            var name = xmlrow.getElementsByTagName("Name")[0].childNodes[0].nodeValue;
+            var position = xmlrow.getElementsByTagName("Pos")[0].childNodes[0].nodeValue;
+            var created = xmlrow.getElementsByTagName("Created")[0].childNodes[0].nodeValue;
+            
+
+            var newDetails = new details(name, parseFloat(pinLat), parseFloat(pinLng), position, created);
+            var pin = new pinObj(newDetails,map);
+            addPin(pin);
+            pinsArray.push(pin);
+            listDOMs = listDOMs+"<li id=\""+i+"\">\n"
+  			+"<h3>"+ name + "</h3>\n"
+			+"<h1>"+ position + "</h1>\n"
+  		        +"</li>\n";
+            
+        }
+        return listDOMs;
+        
+    } //end downloadUrl()
+    
+
+
+
+
+
+		function makeManaWin(manaWin, details){
+					var detail = setInfoWin(details);
+					detail.appendChild(manaWin.deleteB);
+					detail.appendChild(manaWin.editB);
+					manaWin.tab.setContent(detail);
+		}
+		
+		function setInputFormInfoWin(detail){
+					var pinDetail = document.createElement("div");
+					pinDetail.innerHTML = '<div>' +
+					'<p> Latitude: ' +
+					detail.lat +
+					'</p>' +
+					'<p> Logitude: ' +
+					detail.lng +
+					' </p>' +
+					'<form name=\"inputForm\" action=\"\">' +
+					'<a> Name: </a>' +
+					'<div id=\"inputField\"> <input type=\"text\" name=\"PName\" /><br/> </div><p></p>' +
+					'<a> Position: </a>' +
+					'<div id=\"inputField\"> <input type=\"text\" name=\"PPosition\" /><br/> </div><p></p>' +
+					'<a> Created: </a>' +
+					'<div id=\"inputField\"> <input type=\"text\" name=\"PCreated\" /><br/> </div><p></p>' +
+					'</form>' +
+					'</div>';
+					return pinDetail;
+		}
+
+
+
+						google.maps.event.addDomListener(infoWin.tab, 'domready', function(){
+							google.maps.event.addDomListener(infoWin.deleteB, "click", function(e){
+								if ((e.target || e.srcElement).id == 'deletePin') {
+									clearOverlay(marker);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+							google.maps.event.addDomListener(infoWin.editB, "click", function(e){
+								if ((e.target || e.srcElement).id == 'edit') {
+									marker.setDraggable(true);
+									InputWin(infoWin, detail);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+							google.maps.event.addDomListener(infoWin.saveB, "click", function(e){
+								if ((e.target || e.srcElement).id == 'save') {
+									savePerformance(infoWin.tab.content.getElementsByTagName("form")[0], detail, infoWin);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+
+
+
+
+						/*
+						makeManaWin(infoWin, detail);
+						infoWin.tab.open(map, marker);
+						google.maps.event.addDomListener(infoWin.tab, 'domready', function(){
+							google.maps.event.addDomListener(infoWin.deleteB, "click", function(e){
+								if ((e.target || e.srcElement).id == 'deletePin') {
+									clearOverlay(marker);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+						})  */
+
+
+
+// take care that the protocol to get the xml data file in server and client is difference (HTTP:// and file://)
+/*
+function loadfile (filename) {
+	$(document).ready(function(){
+  	$.get(filename, function(xml){
+    $(xml).find("Marker").each(function(){
+      var name = $(this).find('Name').text();
+      // create a new LatLng point for the marker
+      var pinLat = $(this).find('Lat').text();
+      var pinLng = $(this).find('Lng').text();
+     //var point = new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+      // extend the bounds to include the new point
+	  var position = $(this).find('Position').text();
+	  var created = $(this).find('Created').text();
+      var newDetails = new details(name, parseFloat(pinLat), parseFloat(pinLng), position, created);
+      var pin = new pinObj(newDetails);
+      addPin(pin);
+      });
+    });
+	})
+}*/
+
+		function InputWin(manaWin, details){
+					var detail = setInputFormInfoWin(details);
+					detail.appendChild(manaWin.deleteB);
+					//manaWin.saveB.innerHTML = "<div id = \"saveB\" > <input type = \"submit\" id=\"save\" onClick=\"savePerformance(detail.getElementsByName(\"inputForm\")) \" /></div>";
+					detail.appendChild(manaWin.saveB);
+					manaWin.tab.setContent(detail);
+		}
+
+
+
+
+
+
+
+mysql_connect('localhost', 'root', 'Aizu1234') 
+    or die("cannot connect to database\n");
+
+mysql_select_db("DB1") or die(mysql_error());
+
+
+
+<div id="map_canvas"></div><script type="text/javascript">initialize();</script></div>
+
+
+			<div id="map_canvas">
+				<?php				
+				$stm = "SELECT * FROM TEST1";
+				$result = mysql_query($stm) or die (mysql_error());
+				
+				//javascript array 
+				echo"<script language=\"JavaScript\">\n";
+				echo"<!-- hide from older browsers'n";
+				echo"var logArray = new Array(); var latArray = new Array(); var i=0;\n";
+				while($row = mysql_fetch_assoc($result)){
+					echo"logArray[i] = \"$row[\'Longitude\']\";\n";
+					echo"latArray[i] = \"$row[\'Lat\']\";\n";
+					echo"i++;"
+				}
+				echo"initialize(logArray,latArray)";
+				echo"// -->\n";
+				
+				echo"</script>\n";
+				?>
+				</div>
+			</div>
+
+
+
+     function initialize(){
+	  	var myLatlng = new google.maps.LatLng(37.5172831050124, 139.9287411816406);
+	  	var tokyo = new google.maps.LatLng(35.697456, 139.696655);
+	  	var aizu = new google.maps.LatLng(37.492294, 139.931946);
+	  	var fukushimashi = new google.maps.LatLng(37.760401, 140.472565);
+	  	var pinsArray = [];
+
+	  	
+	  	
+	  	var myOptions = {
+	  		zoom: 7,
+	  		center: myLatlng,
+	  		mapTypeId: google.maps.MapTypeId.ROADMAP,
+	  	};
+	  	
+	  	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	  	
+	  	
+	  	
+	  	
+	  	//event listener when click on map	
+				google.maps.event.addListener(map, 'click', function(event){
+					//addMarker(event.latLng);
+					var detail = new details("aa", event.latLng.lat(), event.latLng.lng(), "home", "2011/08/01");
+					var pin = new pinObj(detail,map);
+					addPin(pin);
+					pinsArray.push(pin);
+				});
+				
+
+
+
+			
+						
+				/*
+				//declare infoWindow variable as global to show one infoWindow at a time 
+				var infoWindow = new google.maps.InfoWindow({});
+				
+				
+				function addMarker(location){
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: image,
+						animation: google.maps.Animation.DROP,
+						position: location,
+						draggable: true,
+					});
+					
+					google.maps.event.addListener(marker, 'click', function(){
+						appearInfo(marker);
+						google.maps.event.addDomListener(infoWindow, 'domready', function(){
+							google.maps.event.addDomListener(a, "click", function(e){
+								if ((e.target || e.srcElement).id == 'deletePin') {
+									clearOverlay(marker);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+						})
+					});
+
+					
+					google.maps.event.addListener(marker, 'drag', function(){
+						if (infoWindow.open != null) {
+							infoWindow.close();
+						}
+					})
+					google.maps.event.addListener(marker, 'dragend', function(){
+						appearInfo(marker);
+						google.maps.event.addDomListener(infoWindow, 'domready', function(){
+							google.maps.event.addDomListener(a, "click", function(e){
+								if ((e.target || e.srcElement).id == 'deletePin') {
+									clearOverlay(marker);
+									e.stopPropagation(); //not drop another pin
+								}
+							})
+						})
+					})
+					
+				}*/
+				
+			
+
+			/*window.listDOM = downloadUrl(fileURL,map,pinsArray);
+			alert(window.listDOM);
+			
+			var c=-1;
+			$(document).ready(function(){
+				$("#list li").mouseenter(function(){
+					if (!$(this).hasClass("hover")) {
+						$("#list li").removeClass("hover");
+						$(this).addClass("hover");
+						
+					}
+				})
+				$('#list li').mouseleave(function(){
+					$(this).removeClass("hover");
+				})
+				
+				
+				$('#list li').click(function(){
+					$l = $(this);					
+					$('#list li').css({backgroundColor: '#9c7dff'});
+					$l.css({backgroundColor: '#ffffff'});	
+					if(c!=-1) pinsArray[c].infoWin.tab.close();
+					c = parseInt($(this).attr("id"));
+					showInfo(pinsArray[c]);
+				})
+				
+			});*/
+
+			}    //end of initialize 
+
+
+
+
+
+
+        <?php
+
+		function Apply_Data($result){
+			//javascript array 
+			echo"<script language=\"JavaScript\">\n";
+			echo"<!-- hide from older browsers. \n";
+			echo"var logArray = new Array(); var latArray = new Array(); var i=0;\n";
+			while($row = mysql_fetch_assoc($result)){
+					
+				//handle data from database here
+				$CopyLog=$row['Longitude'];
+				echo $CopyLog; echo "\n";
+				echo"logArray[i]=\"$CopyLog\";\n";
+				$CopyLat=$row['Lat']; 
+				echo"latArray[i]=\"$CopyLat\";\n";
+				echo"i++;\n";
+			}
+			echo"initialize(latArray,logArray);\n";
+			echo"// -->\n";				
+			echo"</script>\n";
+		}
+		
+		?>

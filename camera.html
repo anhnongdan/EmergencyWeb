@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="-1" http-equiv="expires">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="no-cache,must-revalidate" http-equiv="cache-control">
+
+
+</head>
+<body>
+<script type="text/javascript">
+var ip = window.opener.cameraip;
+
+
+Width = 640;
+Height = 480;
+
+MJPEG_port = 80;
+//path = "http://"+ip+":"+MJPEG_port+"/mjpg/video.mjpg";
+path = "http://"+ip+"/jpg/image.jpg";
+document.write('<img id="MJPEG_streaming" src="'+path+'" ALIGN="CENTER" WIDTH="'+Width+'" HEIGHT="'+Height+'">');
+
+//frame = document.getElementById('MJPEG_streaming');
+//frame.setAttribute('src','http://'+ip+':80/mjpg/video.mjpg');
+
+</script>
+</body>
+</html>

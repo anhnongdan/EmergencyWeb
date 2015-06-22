@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Commanding Center Presentation</title>
+
+    <!-- Linking styles -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script type="text/javascript" src="js/some_function.js"></script>
+</head>
+<body>
+
+    <nav id="helpers"><!-- Defining the floating helpers of the page -->
+      <button title="Previous" id="nav-prev" class="nav-prev">&lt;-</button> 
+      <button title="Jump to slide" id="slide-no">3</button> 
+      <button title="Next" id="nav-next" class="nav-next">-&gt;</button>
+      <menu>
+        <button type="checkbox" data-command="notes" title="View Notes">Notes</button>
+        <button type="checkbox" data-command="help" title="View Help">TOC</button>
+        <button type="checkbox" data-command="toweb" title="To Web Page Demo">Web Page</button>
+        <button type="checkbox" data-command="back" title="Back">Back</button>
+     </menu>
+    </nav>
+
+    <div class="presentation"><!-- Defining the main presentation -->
+      <div id="presentation-counter">Loading...</div>
+
+      <div class="slides"><!-- Defining slides -->
+
+        <div class="slide" id="slide1"><!-- Defining single slide -->
+          <section class="middle">
+          	<div class="ptitle">
+            	<p>Design and Implementation of the Commanding Center for WMNDMS</p>
+            </div>
+            <div class="authorInfo">
+            	<p>Nguyen Tat Thang</p>
+            	<p>University of Aizu</p>
+            	<p>CCL 305E</p>
+            	<p>Wireless Mesh Network Project</p>
+            </div>
+          </section>
+          <aside class="note"><!-- hidden notes of slide -->
+            <section>
+              Notes for first slide
+            </section>
+          </aside> 
+        </div>
+
+        <div class="slide" id="slide2">
+          <header>Content</header>
+          <section>
+            <ul style="list-style-type: circle;">
+              <li><a href="#" style="text-decoration: none;">About the project</a>
+              	<ul>
+              		<li> The project's motivation</li>
+        			<li style="clear: both"> The system's aspect</li>
+              	</ul>
+              </li>
+              <li><a href="#" style="text-decoration: none;">Client side interface - Emergency Support Web Page</a>
+              	<ul>
+              		<li>Data controlling</li>
+              		<li style="clear: both">Demonstration</li>
+              	</ul>              	
+              </li>
+            </ul>
+          </section>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside> 
+        </div>
+
+		<div class="slide" id="cover-slide3">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                About WMNDMS
+              </h1>
+              <h2>
+              	<p>Connect victims and rescue team</p>
+              	<p>Saving people's life</p>
+              </h2>
+              <img src="images/illus.png" alt="Image Not Found" width="470px" height="310px" style="padding-top: 40px; float: left; margin-left: 22%"></img>	
+            </hgroup>
+          </section>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>		
+		
+		
+        <div class="slide" id="slide3">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The Motivation
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> Difficulties of searching and rescuing victims on devastated areas.</li>
+            		<li>"Near" means "fast". Local support is crucial</li>
+            		<li> Need a reliable and easy deployable community network.</li>
+            		<li> The advantage of Mesh Wireless Network on establishing and expanding connection coverage.</li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 1</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+
+
+		<div class="slide" id="slide4">
+          <section class="middle">
+            <hgroup>
+              <h1>
+            	System's Aspect
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul>
+            		<li>Victims use mobile devices, send messages about their situation to Rescue Commanding center.</li>
+            		<li>The Web Page monitor all victim's situation for Rescue Commanding Center.</li>
+            		<li>Medium between victims and Commanding Center: MESH NETWORK.</li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 2</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+
+
+        <div class="slide" id="slide5">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                System's Aspect
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> From victim to Recue Commanding Center.</li>
+            		<!--<img src="images/all_sys1.png" alt="Image Not Found" width="700px" height="460px" style="padding-top: 30px; float: left"></img>-->
+            		<img src="images/SYS_ASC.png" alt="Image Not Found" width="760px" height="460px" style="padding-top: 30px; float: left; background: white;margin-left: 4%"></img>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 3</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+     
+     
+		<div class="slide" id="cover-slide6">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                Commanding Center Web Page
+              </h1>
+              <h2>
+                <img src="images/a_p_J.png" alt="Image Not Found" width="300px" height="240px" style="padding-top: 60px; float: left; margin-left: 34%"></img>
+              </h2>	
+            </hgroup>
+          </section>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>	
+    	
+     
+        <div class="slide" id="slide-webpage">
+          <iframe src="http://comm.u-aizu.ac.jp:8080/EmergencyWeb" scrolling="yes"></iframe>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+        
+        
+        <div class="slide" id="slide6">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The web page
+                <img src="images/a_p_J.png" alt="Image Not Found" width="150px" height="125px" style="padding-top: 0px; float: right; margin-right: 20px;"></img>
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li><b>Problem on disaster monitoring</b>
+            			<ul style="list-style-type: square">
+            			<li> Where are victims </li>
+            			<li> How to determine priority on victim rescuing </li> 
+            			<li> How are special conditions of victims </li>
+            		</ul></li>        		
+            		<li><b>Indicate position and Sort out victims</b>
+            			<img src="images/pin_table.png" alt="Image Not Found" width="400px" height="250px" style="padding-top: 19px; float: left; margin-left: 25%;"></img>
+            		</li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 4</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+      
+		 <div class="slide" id="slide7">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The web page
+                <img src="images/a_p_J.png" alt="Image Not Found" width="150px" height="125px" style="padding-top: 0px; float: right; margin-right: 20px;"></img>
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li>Two queues of victims
+            			<ul>
+            				<li>Recommending list: Victims who have sent messages will be add into this queue</li>
+            				<li>Processing list: Queue of victims who are going to be rescued with order determined by The Rescue Commander</li>
+            			</ul>
+            		</li>
+            		<li>Victims can be switched between two queues</li>
+            		<li>The two queue will be effective with multi-interface system</li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 5</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>      
+      
+      
+		<div class="slide" id="slide8">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The Web Page - Data Flow
+                <img src="images/a_p_J.png" alt="Image Not Found" width="150px" height="125px" style="padding-top: 0px; float: right; margin-right: 20px;"></img>
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> Web Page request data from Server via GET method</li>
+            		<li> The Server pull data from database and pass to Web Page</li>
+            		<li> The proccess is handled by PHP</li>
+            		<li style="list-style-type: none"><img src="images/WS.png" alt="Image Not Found" width="520px" height="300px" style="padding-top: 19px; float: left; margin-left: 25%;"></img></li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 6</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>            
+      
+		<div class="slide" id="miscellaneous">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The Web Page - Miscellaneous
+                <img src="images/a_p_J.png" alt="Image Not Found" width="150px" height="125px" style="padding-top: 0px; float: right; margin-right: 20px;"></img>
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> Statistic Graph: show how much message arrived each 5 minute from current moment.</li>
+            		<li style="list-style-type: none"><img src="images/graph.png" alt="Image Not Found" width="450px" height="310px" style="padding-top: 19px; float: left; margin-left: 25%;"></img></li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 7</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>   
+        
+		
+		<div class="slide" id="slide9">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The web page - Future work
+                <img src="images/a_p_J.png" alt="Image Not Found" width="150px" height="125px" style="padding-top: 0px; float: right; margin-right: 20px;"></img>
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> Develop interface software for rescue teams who work "on scene" to rescue people.
+            			<img src="images/future_dev.png" alt="Image Not Found" width="511px" height="257px" style="padding-top: 28px; float: left; margin-left: 25%;"></img>
+            		</li>
+            		<li> Develop, expand system to support people on daily life.</li>    		
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 8</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+		
+		
+		
+		<div class="slide" id="discuss">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                Question
+              </h1>
+              <h2>
+                <img src="images/qm.png" alt="Image Not Found" width="200px" height="300px" style="padding-top: 60px; float: left; margin-left: 42%; -webkit-animation: spin 15s infinite linear; -moz-animation: rotate(360deg);"></img>
+              </h2>	
+            </hgroup>
+          </section>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>	
+    	
+		 
+		<div class="slide" id="slide10">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The web Page - Position estimation
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> Position estimation will be done automatically by system </li>
+            		<li style="list-style-type: none"><img src="images/position_estimation.png" alt="Image Not Found" width="500px" height="380px" style="padding-top: 19px; float: left; margin-left: 25%;"></img></li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 7</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div> 
+		 
+		 
+         <div class="slide" id="slide-sample">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                The motivation
+              </h1>
+            </hgroup>
+            <div class="slide-body">
+            	<ul style="list-style-type: circle">
+            		<li> </li>
+            	</ul>
+            </div>           
+          </section>
+		  <div class="slide-footer">
+		  	<div class="footer-left">
+		  		<p>2012-03-11</p>
+		  	</div>
+			<div class="footer-center">
+				<p> Wireless Mesh Network Project</p>
+				<p class="copyright"> © Nguyen Tat Thang</p>
+			</div>
+		  	<div class="footer-right">
+		  		<p> 4</p>
+		  	</div>
+          </div>
+          <aside class="note">
+            <section>
+              Notes for second slide
+            </section>
+          </aside>
+        </div>
+        
+        
+        
+      <div id="hidden-note" class="invisible" style="display: none;">
+      </div> <!-- hidden note -->
+
+      <aside id="help" class="sidebar invisible" style="display: hidden;"><!-- Defining sidebar help -->
+        <table>
+          <caption>Table of Content</caption>
+            <tr>
+              <th><a href="javascript: TOCclick('slide3')">About the project</a></th>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th><a href="javascript: TOCclick('cover-slide6')">The web Page</a></th>
+              <td>4</td>
+            </tr>
+         </table>
+      </aside>
+
+    </div>
+    
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
