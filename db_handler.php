@@ -17,7 +17,7 @@ require('readPList.php');
             self::$DB_Name = $database;
             if($hostport!=''){
                 try{
-				    self::$DB_Conn = new PDO (sprintf('mysql:host=%s:%s;dbname=%s', $hostname, $hostport, $database), $username, $password);
+				    self::$DB_Conn = new PDO (sprintf('mysql:host=%s;port=%s;dbname=%s', $hostname, $hostport, $database), $username, $password);
                 } catch (PDOException $exception) {
                     echo "Connection Error with PDO (host with port): ".$exception->getMessage();
                 }
