@@ -6,7 +6,7 @@ function readPlaceFile(){
 	$areas = $doc->getElementsByTagName( "area" );
 	
 	echo"<script type=\"text/javascript\">\n";
-	echo"<!-- hide from older browsers. \n";
+	echo"<!-- hide from older browsers. (readPlaceFile) \n";
 	foreach($areas as $area){
 		$name = $area->getElementsByTagName("name")->item(0)->nodeValue;
 		$center_lat = $area->getElementsByTagName("center_lat")->item(0)->nodeValue;

@@ -1,8 +1,9 @@
 <?php
 //require_once(dirname(__FILE__).'/Threadi/Loader.php');
 //require_once(dirname(__FILE__).'/Map_handler.js');
-include('readPList.php');
+require('readPList.php');
 
+    global $db_handler;
 	$db_handler = new DBHandler();
 	
   abstract class Database_Object
@@ -34,6 +35,11 @@ include('readPList.php');
         public function __destruct()
         {
 //            mysql_close(self::$DB_Conn);  <-- commented out due to current shared-link close 'feature'.  If left in, causes a warning that this is not a valid link resource.
+            try{
+                self::$DB_Conn = null;
+            } catch (PDOException $exception) {
+                echo "PDO Disconnecting error: ".$exception->getMessage();
+            }
         }
     }
 
@@ -64,9 +70,14 @@ include('readPList.php');
                 echo "DB query error!".$exp->getMessage();
             }
         }
-        public function _disconnect (){
-			
-		}
+       
+       public function disconnect(){
+         try{
+                self::$DB_Conn = null;
+            } catch (PDOException $exception) {
+                echo "PDO Disconnecting error: ".$exception->getMessage();
+            }   
+       }
     }
 
         
@@ -80,8 +91,11 @@ include('readPList.php');
 		public  function get_user(){
 			$stm = "SELECT * FROM User ORDER BY userID ASC";				
 			$result = $this->DB->_query($stm);
+            
+            //var_dump($result);
+            
 			echo"<script language=\"JavaScript\">\n";
-			echo"<!-- hide from older browsers. \n";
+			echo"<!-- hide from older browsers. (get_user) \n";
 			echo"   window.User_Array = [];\n";
 			foreach($result as $row){	
 				echo"var User = new User_details(\"".$row['userID']."\",\"".$row['name']."\",\"".$row['gender']."\",\"".$row['birthday']."\",\"".$row['address']."\",\"".$row['IPaddress']."\",\"".$row['phoneNumber']."\",\"".$row['email']."\",\"".$row['bloodType']."\",\"".$row['specialMedicalCond']."\");\n";
@@ -96,7 +110,7 @@ include('readPList.php');
 			$stm = "SELECT * FROM ArrivedMessage WHERE changed = 'true' ORDER BY userID ASC";
 			$result = $this->DB->_query($stm);
 			echo"<script language=\"JavaScript\">\n";
-			echo"<!-- hide from older browsers. \n";
+			echo"<!-- hide from older browsers. (get_message) \n";
 			echo"   window.Message_Array = [];\n";
 			foreach($result as $row){
 				//echo "<p>".$row['messageID']."  ".$row['userID']."  addtoDB:  ".$row['addtodbtime']."  event:  ".$row['event']."  urgency:  ".$row['urgency']."  long: ".$row['longitude']."  lat:  ".$row['latitude']."</p>\n";
@@ -296,5 +310,4 @@ include('readPList.php');
 				return $i;
 		}
 		return -1;
-	}	
-
+	}

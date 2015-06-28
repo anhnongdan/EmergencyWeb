@@ -34,7 +34,7 @@ function  firstGraphCreate(five, ten, fifteen, twenty, twentyfive, thirty, thirt
 
 function continuousData(five, ten, fifteen, twenty, twentyfive, thirty, thirtyfive, forty){
 	if(window.DataArray.length==0){
-		alert("This function should not be used here!");
+		alert("This function should not be used now!");
 	}else{
 		window.DataArray = [];	
 		window.DataArray.push([5,parseInt(five)]);

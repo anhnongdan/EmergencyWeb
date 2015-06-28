@@ -10,4 +10,5 @@
 	//echo"	copyParentPin_Array();\n";
 	//$db_handler->InitWait();
 	echo"</script>\n";
+    $db_handler->DB->disconnect();
 ?>

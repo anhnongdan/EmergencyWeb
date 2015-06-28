@@ -3,4 +3,4 @@
 	global $db_handler;
 	
 	$db_handler->continousMessageCount();
-?>
+    $db_handler->DB->disconnect();

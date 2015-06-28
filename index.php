@@ -8,6 +8,8 @@ include('db_handler.php');
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
 	    <meta name="viewport" content=" initial-scale=1.0, user-scalable=no"/>
         <meta http-equiv="Pragma" content="no-cache">
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>
@@ -75,8 +77,8 @@ include('db_handler.php');
 			<script type="text/javascript">
 				initialize();
 				//testCamera();
-				$('#map_canvas').load('firstgetdata.php');
-			</script>				
+				$('#google_map').load('firstgetdata.php');
+			</script>
 		</div>	
 		
 		
