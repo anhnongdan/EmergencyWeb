@@ -47,22 +47,22 @@ require('readPList.php');
    final class DB extends Database_Object
     {
        
-        private $creds_string = file_get_contents ($_ENV['CRED_FILE'], false);
-       
-        if ($creds_string == false) {
-            die('FATAL: Could not read credentials file');
-        }
-        private $creds = json_decode($creds_string, true);
-        private $database   = $creds['MYSQLS']['MYSQLS_DATABASE'];
-        private $host       = $creds['MYSQLS']['MYSQLS_HOSTNAME'];
-        private $port       = $creds['MYSQLS']['MYSQLS_PORT'];
-        private $username   = $creds['MYSQLS']['MYSQLS_USERNAME'];
-        private $password   = $creds['MYSQLS']['MYSQLS_PASSWORD'];
-       
        //Mysql database on amazon
 //        public static function Open($database = 'depqp2rcu5m', $hostname = 'mysqlsdb.co8hm2var4k9.eu-west-1.rds.amazonaws.com', $hostport = '3306', $username = 'depqp2rcu5m', $password = '11UGxl4cUr3D')
         public static function Open()
         {
+            //get the credential to hit the database
+            $creds_string = file_get_contents ($_ENV['CRED_FILE'], false);
+            if ($creds_string == false) {
+                die('FATAL: Could not read credentials file');
+            }
+            $creds = json_decode($creds_string, true);
+            $database   = $creds['MYSQLS']['MYSQLS_DATABASE'];
+            $host       = $creds['MYSQLS']['MYSQLS_HOSTNAME'];
+            $port       = $creds['MYSQLS']['MYSQLS_PORT'];
+            $username   = $creds['MYSQLS']['MYSQLS_USERNAME'];
+            $password   = $creds['MYSQLS']['MYSQLS_PASSWORD'];
+       
             if (!self::$DB_Open)
             {
                 self::$DB_Open = new self($database, $host, $port, $username, $password);
