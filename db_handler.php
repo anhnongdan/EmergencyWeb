@@ -47,7 +47,8 @@ require('readPList.php');
    final class DB extends Database_Object
     {
        
-        private $creds_string = file_get_contents($_ENV['CRED_FILE'], false);
+        private $creds_string = file_get_contents ($_ENV['CRED_FILE'], false);
+       
         if ($creds_string == false) {
             die('FATAL: Could not read credentials file');
         }
