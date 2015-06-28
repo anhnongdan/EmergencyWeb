@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <?php 
-//session_start();
-
-//mysql_connect('localhost', 'thang', 'tatthang') 
-//    or die("cannot connect to database\n");
-//include('db_handler.php');
-//mysql_select_db("my_db") or die(mysql_error());
-
-try{
-    self::$DB_Conn = new PDO ('mysql:host=mysqlsdb.co8hm2var4k9.eu-west-1.rds.amazonaws.com:3306;dbname=depqp2rcu5m', 'depqp2rcu5m', '11UGxl4cUr3D');
-    } catch (PDOException $exception) {
-    echo "Connection Error with PDO: ".$exception->getMessage();
-    }
-
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -96,7 +83,7 @@ try{
 						var lng = window.opener.window.AreasDef[index].center_long;
 						window.map.panTo(new  google.maps.LatLng(lat, lng));
 					}
-					$('#map_canvas').load('firstgetdata_forIW.php');
+					$('#google-map').load('firstgetdata_forIW.php');
 				</script>				
 			</div>
 			<div id="popup_button_onIW">

@@ -1,6 +1,6 @@
 <?php
-	include("db_handler.php");
-	global $db_handler;
+	require_once ('db_handler.php');
+    $db_handler = new DBHandler();
 	
 	$db_handler->continousMessageCount();
     $db_handler->DB->disconnect();

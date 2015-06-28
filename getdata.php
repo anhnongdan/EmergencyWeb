@@ -1,8 +1,6 @@
 <?php
-	require('db_handler.php');
-	//execute
-	//$dbHandler = new DBHandler();
-	//global $db_handler;
+    require_once ('db_handler.php');
+    $db_handler = new DBHandler();
 
 	$db_handler->get_user();	   //get_user checked
 	$db_handler->get_message();	//get_message checked

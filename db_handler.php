@@ -2,9 +2,6 @@
 //require_once(dirname(__FILE__).'/Threadi/Loader.php');
 //require_once(dirname(__FILE__).'/Map_handler.js');
 require('readPList.php');
-
-    global $db_handler;
-	$db_handler = new DBHandler();
 	
   abstract class Database_Object
     {

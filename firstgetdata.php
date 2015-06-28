@@ -1,7 +1,7 @@
 <?php
 	require_once 'db_handler.php';
 	require_once 'readPlace.php';
-	
+    $db_handler = new DBHandler();
 
 	readPlaceFile();
 	
@@ -26,4 +26,4 @@
 	echo"	createList(window.Pin_Array);\n";
 	echo"	createAreaDropList();\n"; 
 	echo"</script>\n";
-    //$db_handler->DB->disconnect();
+    $db_handler->DB->disconnect();
