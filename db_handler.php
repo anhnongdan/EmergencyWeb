@@ -19,13 +19,13 @@ require('readPList.php');
                 try{
 				    self::$DB_Conn = new PDO (sprintf('mysql:host=%s:%s;dbname=%s', $hostname, $hostport, $database), $username, $password);
                 } catch (PDOException $exception) {
-                    echo "Connection Error with PDO: ".$exception->getMessage();
+                    echo "Connection Error with PDO (host with port): ".$exception->getMessage();
                 }
             } else {
 				try{
 				    self::$DB_Conn = new PDO (sprintf('mysql:host=%s;dbname=%s', $hostname, $database), $username, $password);
                 } catch (PDOException $exception) {
-                    echo "Connection Error with PDO: ".$exception->getMessage();
+                    echo "Connection Error with PDO (host without port): ".$exception->getMessage();
                 }
             }
         }
@@ -46,17 +46,30 @@ require('readPList.php');
 
    final class DB extends Database_Object
     {
+       
+        $creds_string = file_get_contents($_ENV['CRED_FILE'], false);
+        if ($creds_string == false) {
+            die('FATAL: Could not read credentials file');
+        }
+        $creds = json_decode($creds_string, true);
+        $database   = $creds['MYSQLS']['MYSQLS_DATABASE'];
+        $host       = $creds['MYSQLS']['MYSQLS_HOSTNAME'];
+        $port       = $creds['MYSQLS']['MYSQLS_PORT'];
+        $username   = $creds['MYSQLS']['MYSQLS_USERNAME'];
+        $password   = $creds['MYSQLS']['MYSQLS_PASSWORD'];
+       
        //Mysql database on amazon
-        public static function Open($database = 'depqp2rcu5m', $hostname = 'mysqlsdb.co8hm2var4k9.eu-west-1.rds.amazonaws.com', $hostport = '3306', $username = 'depqp2rcu5m', $password = '11UGxl4cUr3D')
+//        public static function Open($database = 'depqp2rcu5m', $hostname = 'mysqlsdb.co8hm2var4k9.eu-west-1.rds.amazonaws.com', $hostport = '3306', $username = 'depqp2rcu5m', $password = '11UGxl4cUr3D')
+        public static function Open()
         {
             if (!self::$DB_Open)
             {
-                self::$DB_Open = new self($database, $hostname, $hostport, $username, $password);
+                self::$DB_Open = new self($database, $host, $port, $username, $password);
             }
             else
             {
                 self::$DB_Open = null;
-                self::$DB_Open = new self($database, $hostname, $hostport, $username, $password);
+                self::$DB_Open = new self($database, $host, $port, $username, $password);
             }
             return self::$DB_Open;
         }
